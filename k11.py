@@ -34,7 +34,11 @@ if __name__ == "__main__":
     if check_code():
         print(" Successfully connected to BAYMAX SERVER ...")
         time.sleep(1) 
-        show_banner() 
+        show_banner()
+
+        # put the rest of your logic here (imports, functions, threads)
+    else:
+        sys.exit(1) 
 
 import subprocess
 import sys
@@ -223,4 +227,5 @@ for _ in range(100):
 for t in threads:
     t.join()
     
+
 
