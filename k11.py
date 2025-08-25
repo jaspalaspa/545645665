@@ -1,3 +1,41 @@
+
+import requests
+import webbrowser
+import os
+import time
+
+API_VALIDATE_URL = "https://file-expiry.onrender.com/validate"
+TELEGRAM_CHANNEL = "https://t.me/+zl0PPCz77_g0NTU1" 
+
+def check_code():
+    user_id = input("ENTER USER ID: ").strip()
+    code = input("ENTER KEY : ").strip()
+    try:
+        resp = requests.get(API_VALIDATE_URL, params={"code": code, "user_id": user_id})
+    except requests.RequestException as e:
+        print(f" CONNECTION ERROR: {e}")
+        return False
+    try:
+        data = resp.json()
+    except ValueError:
+        print("SERVER ERROR ")
+        return False
+    if resp.status_code == 200 and data.get("valid"):
+        print(" ACCESS GRANTED! ")
+        return True
+    else:
+        error = data.get("error", "Unknown error")
+        print(f" ACCESS DENIED BRO : {error}")
+        print(" REDIRECTING TO CHANNEL ...")
+        webbrowser.open(TELEGRAM_CHANNEL)
+        return False
+
+if __name__ == "__main__":
+    if check_code():
+        print(" Successfully connected to BAYMAX SERVER ...")
+        time.sleep(1) 
+        show_banner() 
+
 import subprocess
 import sys
 import importlib
@@ -185,3 +223,4 @@ for _ in range(100):
 for t in threads:
     t.join()
     
+
