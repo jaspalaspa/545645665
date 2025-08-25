@@ -1,8 +1,8 @@
-
 import requests
 import webbrowser
 import os
 import time
+import sys
 
 API_VALIDATE_URL = "https://file-expiry.onrender.com/validate"
 TELEGRAM_CHANNEL = "https://t.me/+zl0PPCz77_g0NTU1" 
@@ -28,17 +28,13 @@ def check_code():
         print(f" ACCESS DENIED BRO : {error}")
         print(" REDIRECTING TO CHANNEL ...")
         webbrowser.open(TELEGRAM_CHANNEL)
-        return False
+        sys.exit(1)
 
 if __name__ == "__main__":
     if check_code():
         print(" Successfully connected to BAYMAX SERVER ...")
         time.sleep(1) 
         show_banner()
-
-        # put the rest of your logic here (imports, functions, threads)
-    else:
-        sys.exit(1) 
 
 import subprocess
 import sys
@@ -227,5 +223,6 @@ for _ in range(100):
 for t in threads:
     t.join()
     
+
 
 
