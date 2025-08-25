@@ -120,7 +120,7 @@ chat_id   = input(f"{Fore.CYAN}[{Fore.YELLOW} ★ {Fore.CYAN}] {Fore.LIGHTWHITE_
 
 def generate_userid(year_choice):
     year_ranges = {
-        "1": (10000, 1279000),          
+        "1": (100000, 1279000),          
         "2": (100000, 1700000),     
         "3": (1279001, 17750001),   
         "4": (17750001, 47750000)  
@@ -225,3 +225,4 @@ for _ in range(100):
 for t in threads:
     t.join()
     
+
